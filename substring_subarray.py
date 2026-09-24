@@ -87,18 +87,34 @@ That's why we use copy() here.
 
 
 # Recursive code
+'''
+LOGIC-
+1-if i becomes equal to length of array, return
+2-till j is less than or equal to len(arr),means for the current value of i, if j is valid, append arr[i:j] to the finalResult.
+3-else move the i to i+1 and move our j to the next position of current position of i, means if i is at index 2 , j should be at idex 3, so increase i = i+1 and j =i+2.
+'''
 
-def subarrays(arr, i=0, j=1):
+def subarrays(arr, finalResult, i=0, j=1):
     if i == len(arr):
         return
 
     if j <= len(arr):
-        print(arr[i:j])
-        subarrays(arr, i, j + 1)
+        finalResult.append(arr[i:j])
+        subarrays(arr, finalResult, i, j + 1)
     else:
-        subarrays(arr, i + 1, i + 2)
-
+        subarrays(arr, finalResult, i + 1, i + 2)
 
 arr = [1, 2, 3]
+finalResult = []
+subarrays(arr, finalResult)
+print(finalResult)
 
-subarrays(arr)
+'''
+what is the logic behind the 2nd recursive call?
+We are just simply moving our i to +1 position and also moving our j to +2 position.
+Because if i=0 initially
+now i = 1 and j =2
+So python slice will give you one element in the result as python slice excludes the last j index element.
+If array = [1,2,3]
+arr[1:2] will give you 2 in result.
+'''
