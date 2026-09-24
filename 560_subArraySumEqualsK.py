@@ -1,7 +1,7 @@
 # TLE working recursive code
 # Recursive code is not possible for this problem because TLE and RuntimeError: maximum recursion depth exceeded error will come
 
-''LOGIC-
+'''Recursion LOGIC-
 1-Fix the starting index i and try every possible ending index j from i + 1 onward.
 2-For each subarray arr[i:j], calculate its sum using sum(arr[i:j]).
 3-If the sum equals k, increment ans and pass it to the next recursive call.
